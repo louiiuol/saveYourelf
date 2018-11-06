@@ -1,0 +1,62 @@
+{% extends "HugoPlatformBundle::layout.html.twig" %}
+
+{% block title %}
+  Edit object - {{ parent() }}
+{% endblock %}
+
+{% block hugoplatform_body %}
+
+  <h2>Edit object</h2>
+
+  <div class="well">
+  {{ form_start(form, {'attr': {'class': 'form-horizontal'}}) }}
+
+    {# Les erreurs générales du formulaire. #}
+    {{ form_errors(form) }}
+
+
+    <div class="form-group">
+      {{ form_label(form.name, "Name of object", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+      {{ form_errors(form.name) }}
+      <div class="col-sm-4">
+        {{ form_widget(form.name, {'attr': {'class': 'form-control'}}) }}
+      </div>
+    </div>
+
+    <div class="form-group">
+      {{ form_label(form.imageobj, "Picture", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+      {{ form_errors(form.imageobj) }}
+      <div class="col-sm-4">
+        {{ form_widget(form.imageobj, {'attr': {'class': ''}}) }}
+      </div>
+    </div>
+
+
+    <div class="form-group">
+      {{ form_label(form.categories, "Categories", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+      {{ form_errors(form.categories) }}
+      <div class="col-sm-6">
+        {{ form_widget(form.categories, {'attr': {'class': ''}}) }}
+      </div>
+    </div>
+
+  {{ form_widget(form.save, {'attr': {'class': 'btn btn-primary'}}) }}
+
+  {{ form_rest(form) }}
+  {{ form_end(form) }}
+</div>
+
+  <p>
+    Editing an existing object , thank you not to change
+    the general spirit of object already published.
+  </p>
+
+  <p>
+    <a href="{{ path('hugo_platform_admin', {'id': object.id}) }}" class="btn btn-default">
+      <i class="glyphicon glyphicon-chevron-left"></i>
+      Return to Admin Panel
+    </a>
+  </p>
+
+{% endblock %}
+

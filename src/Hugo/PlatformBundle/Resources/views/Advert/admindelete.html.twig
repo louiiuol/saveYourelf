@@ -1,0 +1,27 @@
+{% extends "HugoPlatformBundle::layout.html.twig" %}
+
+{% block title %}
+  Delete a object - {{ parent() }}
+{% endblock %}
+
+{% block hugoplatform_body %}
+
+  <h2>Delete an object</h2>
+
+  <p>
+    Are you sure that you want to delete this object : "{{ object.name }}" ?
+  </p>
+
+  {# On met l'id de l'annonce dans la route de l'action du formulaire #}
+  <form action="{{ path('hugo_platform_admin_delete', {'id': object.id}) }}" method="post">
+    <a href="{{ path('hugo_platform_admin') }}" class="btn btn-default">
+      <i class="glyphicon glyphicon-chevron-left"></i>
+      Return to Admin Panel
+    </a>
+    {# Ici j'ai écrit le bouton de soumission à la main #}
+    <input type="submit" value="Supprimer" class="btn btn-danger" />
+    {# Ceci va générer le champ CSRF #}
+    {{ form_rest(form) }}
+  </form>
+
+{% endblock %}

@@ -1,0 +1,211 @@
+<?php
+
+namespace Hugo\UserBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+use FOS\UserBundle\Model\User as BaseUser;
+use Gedmo\Mapping\Annotation as Gedmo;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\Validator\Constraints as Assert;
+
+/**
+ * User
+ *
+ * @ORM\Table()
+ * @ORM\Entity
+ */
+class User extends BaseUser {
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    protected $id;
+
+	/**
+	* @ORM\Column(type="string", length=255, nullable=true)
+    * @Assert\Length(max=50)
+	*/
+	protected $location;
+
+	/**
+	* @ORM\Column(type="text", nullable=true)
+    * @Assert\Length(max=510)
+	*/
+	protected $bio;
+
+    /**
+    * @ORM\Column(type="date", nullable=true)
+    */
+    protected $birth;
+
+    /**
+    * @ORM\Column(type="string", length=255, nullable=true)
+    * @Assert\Length(max=10)
+    */
+    protected $phone;
+
+    /**
+    * @ORM\Column(type="string", length=255, nullable=true)
+    * @Assert\Length(max=30)
+    */
+    protected $firstname;
+
+    /**
+    * @ORM\Column(type="string", length=255, nullable=true)
+    * @Assert\Length(max=30)
+    */
+    protected $lastname;
+
+    /**
+    * @ORM\OneToOne(targetEntity="Hugo\UserBundle\Entity\ImageUser", cascade={"persist", "remove"})
+    * @Assert\Valid()
+    */
+  private $imageuser;
+
+    /**
+     * Set location
+     *
+     * @param string $location
+     *
+     * @return User
+     */
+    public function setLocation($location)
+    {
+        $this->location = $location;
+
+        return $this;
+    }
+
+    /**
+     * Get location
+     *
+     * @return string
+     */
+    public function getLocation()
+    {
+        return $this->location;
+    }
+
+    /**
+     * Set bio
+     *
+     * @param string $bio
+     *
+     * @return User
+     */
+    public function setBio($bio)
+    {
+        $this->bio = $bio;
+
+        return $this;
+    }
+
+    /**
+     * Get bio
+     *
+     * @return string
+     */
+    public function getBio()
+    {
+        return $this->bio;
+    }
+
+    /**
+     * Set birth
+     *
+     * @param \DateTime $birth
+     *
+     * @return User
+     */
+    public function setBirth($birth)
+    {
+        $this->birth = $birth;
+
+        return $this;
+    }
+
+    /**
+     * Get birth
+     *
+     * @return \DateTime
+     */
+    public function getBirth()
+    {
+        return $this->birth;
+    }
+
+    /**
+     * Set phone
+     *
+     * @param string $phone
+     *
+     * @return User
+     */
+    public function setPhone($phone)
+    {
+        $this->phone = $phone;
+
+        return $this;
+    }
+
+    /**
+     * Get phone
+     *
+     * @return string
+     */
+    public function getPhone()
+    {
+        return $this->phone;
+    }
+
+    /**
+     * Set firstname
+     *
+     * @param string $firstname
+     *
+     * @return User
+     */
+    public function setFirstname($firstname)
+    {
+        $this->firstname = $firstname;
+
+        return $this;
+    }
+
+    /**
+     * Get firstname
+     *
+     * @return string
+     */
+    public function getFirstname()
+    {
+        return $this->firstname;
+    }
+
+    /**
+     * Set lastname
+     *
+     * @param string $lastname
+     *
+     * @return User
+     */
+    public function setLastname($lastname)
+    {
+        $this->lastname = $lastname;
+
+        return $this;
+    }
+
+    /**
+     * Get lastname
+     *
+     * @return string
+     */
+    public function getLastname()
+    {
+        return $this->lastname;
+    }
+}

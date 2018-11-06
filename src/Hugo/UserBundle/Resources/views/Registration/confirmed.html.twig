@@ -1,0 +1,27 @@
+{% extends "FOSUserBundle::layout.html.twig" %}
+
+{% trans_default_domain 'FOSUserBundle' %}
+
+{% block fos_user_content %}
+
+
+
+    <div class="container">
+		<?php include 'app/php/nav.php'; ?>
+		<div class="container">
+			<div class="prez">
+			<h2 class="titre"><em>C</em>ongratulation, <em>y</em>ou <em>a</em>re <em>m</em>ember <em>o</em>f <em>S</em>ave <em>Y</em>ourself !</h2>	
+			<p class='text'>{{ 'registration.confirmed'|trans({'%username%': user.username}) }}, you can personalize your profile, add a savie... There is a lot you can do here ! <br> Check what you can do now !
+				</p>
+			</div><br>
+		<div id='fonctions'>
+					<a data-toggle="modal" data-target="#profile" href=""><div style="width:180px;" class="col-xs-2 col-xs-offset-3"><img src="{{ asset('bundles/hugoplatform/css/img/avatar/admin.png') }}" class='img-responsive center img-circle' alt=""><p>Profile</p></div></a>
+					<a data-toggle="modal" data-target="#add_savie" ><div style="width:180px;"class="col-xs-2"><img src="{{ asset('bundles/hugoplatform/css/img/bulle_plus.png') }}" class='img-responsive center img-circle' alt=""><p>Add <br>Savy</p></div></a>
+					<a href="{{ path('hugo_platform_faq') }}"><div style="width:180px;" class="col-xs-2"><img src="{{ asset('bundles/hugoplatform/css/img/faq.jpg') }}" class='img-responsive center img-circle' alt=""><p>F.A.Q</p></div></a>
+					<a href="{{ path('hugo_platform_categories') }}"><div style="margin-top:25px;width:180px;"class="col-xs-2 col-xs-offset-3"><img src="{{ asset('bundles/hugoplatform/css/img/Gardening.png') }}" class='img-responsive center img-circle' alt=""><p>All <br>Categories</p></div></a>
+					<a href="{{ path('hugo_platform_savies') }}"><div style="margin-top:25px;width:180px;"class="col-xs-2"><img src="{{ asset('bundles/hugoplatform/css/img/allsavies.jpg') }}" class='img-responsive center img-circle' alt=""><p>All <br>Savies</p></div></a>
+					<a href="{{ path('hugo_platform_home') }}"><div style="margin-top:25px;width:180px;"class="col-xs-2"><img src="{{ asset('bundles/hugoplatform/css/img/SY.jpeg') }}" class='img-responsive center img-circle' alt=""><p>Back <br> Home</p></div></a>
+		</div>		
+	</div>
+</div>
+{% endblock fos_user_content %}

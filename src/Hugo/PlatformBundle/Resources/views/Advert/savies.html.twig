@@ -1,0 +1,50 @@
+{% extends "HugoPlatformBundle::layout.html.twig" %}
+
+{% block hugoplatform_body %}
+
+  <div class="prez">
+    <h2 class="titre"><em>T</em>ravel <em>T</em>hrough <em>A</em>ll <em>S</em>avies</h2>
+    <p class='text'>Find all the savies that has been added by the SaveYourself community. They're sorted per cateory so you can surf more easily. You can also add yours</p>
+  </div>
+  <br>
+
+  <div class="container">
+    {% for advert in listAdverts %}  
+    <div class="savies">
+      <div class="col-md-1"></div>
+      <div class="col-md-3"> <img src="{{ asset(advert.image.webPath) }}" alt="{{ advert.image.alt }}" style="height:150px;width:150px;" class ="img-circle colimagelist img-responsive center-block"></div>
+      <div class="col-md-1"></div>
+      <div class="description col-md-6">
+        <a href="{{ path('hugo_platform_view', {'slug': advert.slug}) }}"><h3 style="color:white">{{ advert.title }}</h3></a>
+        <p>{{ advert.content }}</p>
+      </div>
+      <a class='bouton'id="see" href='{{ path('hugo_platform_view', {'slug': advert.slug}) }}'>See the Savy</a>
+      <p class="author"> by <a href="{{ path('fos_user_profile_show_name', {'username': advert.author}) }}">
+             {{ advert.author }}</a>, the {{ advert.date|date('d/m/Y') }}</p>
+      {% if is_granted('ROLE_ADMIN') %}
+            <a href="{{ path('hugo_platform_edit', {'slug': advert.slug}) }}">
+              <i class="glyphicon glyphicon-edit glyphcolor"></i>
+            </a>
+            <a href="{{ path('hugo_platform_delete', {'slug': advert.slug}) }}">
+              <i class="glyphicon glyphicon-trash glyphcolor"></i>
+            </a>
+      {% endif %}
+      <div class="col-md-1"></div>
+    </div>
+    <br>
+    {% else %}
+          <li>No savies (yet!)</li>
+    {% endfor %}
+  </div>
+  <ul class="pagination">
+  {# On utilise la fonction range(a, b) qui crée un tableau de valeurs entre a et b #}
+  {% for p in range(1, nbPages) %}
+    <li{% if p == page %} class="active"{% endif %}>
+      <a href="{{ path('hugo_platform_savies', {'page': p}) }}">{{ p }}</a>
+    </li>
+  {% endfor %}
+</ul>
+
+
+
+{% endblock %}

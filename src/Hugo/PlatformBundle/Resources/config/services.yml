@@ -1,0 +1,14 @@
+services:
+#    hugo_platform.example:
+#        class: Hugo\PlatformBundle\Example
+#        arguments: [@service_id, "plain_value", %parameter%]
+
+    hugo_platform.antispam:
+        class:     Hugo\PlatformBundle\Antispam\HugoAntispam
+        arguments: [@mailer,%locale%, 50]
+
+    hugo_platform.validator.antiflood:
+        class:    Hugo\PlatformBundle\Validator\AntifloodValidator
+        arguments: [@request_stack, @doctrine.orm.entity_manager]
+        tags:
+            - { name: validator.constraint_validator, alias: hugo_platform_antiflood}

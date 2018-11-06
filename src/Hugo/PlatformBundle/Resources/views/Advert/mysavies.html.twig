@@ -1,0 +1,28 @@
+      <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button><h4 class="modal-title">My Savies</h4></div>
+            <div class="modal-body"><h6>An easy way to find and manage your savies !</h6>
+
+        <ul>
+          {% for advert in listAdverts %}
+            {% if advert.author==app.user %}
+            <li>
+              <a href="{{ path('hugo_platform_view', {'slug': advert.slug}) }}">
+                {{ advert.title }}
+              </a>
+              the {{ advert.date|date('d/m/Y') }}
+                <a href="{{ path('hugo_platform_edit', {'slug': advert.slug}) }}">
+                  <i class="glyphicon glyphicon-edit"></i>
+                </a>
+                <a href="{{ path('hugo_platform_delete', {'slug': advert.slug}) }}">
+                  <i class="glyphicon glyphicon-trash"></i>
+                </a>
+                </li>            
+            {% endif %}
+          {% endfor %}
+          <hr>
+        <h4><a style="color:#486e9b" data-toggle="modal" data-target="#add_savie" data-dismiss="modal">Click here to add a Savy</a></h4>
+        </ul>
+        </div>
+      </div>
+  </div>

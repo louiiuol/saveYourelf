@@ -1,0 +1,21 @@
+{% trans_default_domain 'FOSUserBundle' %}
+
+<form action="{{ path('fos_user_registration_register') }}" {{ form_enctype(form) }} method="POST" class="fos_user_registration_register">
+      <div class="form-group" id="fos_user_registration_form">
+
+
+            <form action="{{ path("fos_user_security_check") }}" method="post" class="form-horizontal" >
+                <div class="form-group">
+        			<div class="col-sm-12">{{ form_errors(form.username) }} {{ form_widget(form.username, {'attr': {'class': 'form-control', 'placeholder':'Username*'}}) }}</div>
+        			<div class="col-sm-12">{{ form_errors(form.email) }} {{ form_widget(form.email, {'attr': {'class': 'form-control', 'placeholder':'E-mail*'}}) }}</div>
+        			<div class="col-sm-12">{{ form_errors(form.plainPassword.first) }} {{ form_widget(form.plainPassword.first, {'attr': {'class': 'form-control', 'placeholder':'Password*'}}) }}</div>
+        			<div class="col-sm-12">{{ form_errors(form.plainPassword.second) }} {{ form_widget(form.plainPassword.second, {'attr': {'class': 'form-control', 'placeholder':'Verification*'}}) }}</div>
+        			<div class="col-sm-12">{{ form_errors(form.firstname) }} {{ form_widget(form.firstname, {'attr': {'class': 'form-control', 'placeholder':'Firstname'}}) }}</div>
+        			<div class="col-sm-12">{{ form_errors(form.lastname) }} {{ form_widget(form.lastname, {'attr': {'class': 'form-control', 'placeholder':'Lastname'}}) }}</div>
+        			<div class="col-sm-12">{{ form_errors(form.birth) }} {{ form_widget(form.birth, {'attr': {'class': 'form-control', 'placeholder':'Birth'}}) }}</div>
+        			<div class="col-sm-12">{{ form_errors(form.phone) }} {{ form_widget(form.phone, {'attr': {'class': 'form-control', 'placeholder':'Phone'}}) }}</div>
+        			<div class="col-sm-12">{{ form_errors(form.location) }} {{ form_widget(form.location, {'attr': {'class': 'form-control', 'placeholder':'Country'}}) }}</div>
+        			<div class="col-sm-12">{{ form_errors(form.bio) }} {{ form_widget(form.bio, {'attr': {'class': 'form-control', 'placeholder':'Presentation'}}) }}</div>
+  {{ form_rest(form) }}
+                <p>* : champs obligatoires</p>
+            <p>Don't forget yo check your mailbox to validate your account</p>

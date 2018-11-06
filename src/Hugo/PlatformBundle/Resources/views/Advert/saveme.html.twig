@@ -1,0 +1,135 @@
+{% extends "HugoPlatformBundle::layout.html.twig" %}
+
+{% block hugoplatform_body %}
+
+
+<form action="" method="post">
+	<div class="prez">
+		<h2 class="titre"><em>S</em>elect what <em>Y</em>ou have at <em>H</em>and</h2>
+		<p class='text'>Thanks to an algorythm, SaveYourself is able to save you in any situation. Check the objects you have to hand, select a climate, and we give you a list of savies that you can build thanks to detailed tutorials. Let us help you !</p>
+	</div>
+	<br>
+<!--FIN PREZ-->
+<!--SEARCH BAR-->	
+	<div class"row col-md-12">
+		<div class="input-group input-group-lg" id="searching"><div style="color:white" type="text" class="form-control control1">Search According To</div>
+	</div>
+<!--FIN SEARCH BAR-->	
+<!--CHOIX-->
+	<div class="choix" id="research">
+		<ul class="nav nav-tabs" role="tablist">
+			<li class="col-md-3 choice"><a href="#difficulty" aria-controls="object" role="tab" data-toggle="tab"><h4>Difficulty</h4></a><span class="caret blue"></span></li>
+			<li class="col-md-3 choice"><a href="#categories" aria-controls="object" role="tab" data-toggle="tab"><h4>Categories</h4></a><span class="caret blue"></span></li>
+			<li class="col-md-3 choice"><a href="#climate" aria-controls="object" role="tab" data-toggle="tab"><h4>Climate</h4></a><span class="caret blue"></span></li>
+			<li class="col-md-3 choice"><a href="#object" aria-controls="object" role="tab" data-toggle="tab"><h4>Object</h4></a><span class="caret blue"></span></li>
+		</ul>
+	</div>
+<!--FIN CHOIX-->
+<!--FILTRES-->
+	<div class="tab-content" id="tdm">
+
+			<div role="tabpanel" class="tab-pane" id="difficulty">
+				<div class="tab-content">
+					<div class="checkbox">
+						<div class="container">
+							<div class="fond">
+								<div class="row">
+							  	{% for dif in difficulties %}
+							  		<div class="col-xs-3"><div class='logo_sm'><label><img src="http://195.83.128.55/~mmi14f07/Symfony/web/bundles/hugoplatform/css/img/{{dif.name}}.png" class ="img-circle img-responsive center-block"><h3><input type="checkbox" name="difficultyNames[]" value="{{ dif.id }}"> {{dif.name}}</h3></label></div></div>
+							  	{% endfor %}
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div role="tabpanel" class="tab-pane" id="categories">
+				<div class="tab-content">
+					<div class="checkbox">
+						<div class="container">
+							<div class="fond">
+								<div class="row">
+							  	{% for cat in categories %}
+							  		<div class="col-xs-3"><div class='logo_sm'><label><img src="http://195.83.128.55/~mmi14f07/Symfony/web/bundles/hugoplatform/css/img/{{cat.name}}.png" class ="img-circle img-responsive center-block"><h3><input type="checkbox" name="categoryNames[]" value="{{ cat.id }}"> {{cat.name}}</h3></label></div></div>
+							  	{% endfor %}
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div role="tabpanel" class="tab-pane" id="climate">
+				<div class="tab-content">
+					<div class="checkbox">
+						<div class="container">
+							<div class="fond">
+								<div class="row">
+							  	{% for clim in climates %}
+							  		<div class="col-xs-3"><div class='logo_sm'><label><img src="http://195.83.128.55/~mmi14f07/Symfony/web/bundles/hugoplatform/css/img/{{clim.name}}.png" class ="img-circle img-responsive center-block"><h3><input type="checkbox" name="climateNames[]" value="{{ clim.id }}"> {{clim.name}}</h3></label></div></div>
+							  	{% endfor %}
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div role="tabpanel" class="tab-pane" id="object">
+				<div class="tab-content">
+					<div class="checkbox">
+						<div class="container">
+							<div class="fond">
+								<div class="row">
+							  	{% for obj in objects %}
+		  							<div class="col-xs-4" style='color:white'><input type="checkbox" name="objectNames[]" value="{{ obj.id }}"> {{obj.name}}</div>
+		  						{% endfor %}
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+
+			
+	  	</p>
+		<button type="submit" value="saveme" id='saveMe'class="btn btn-sample btn-default center-block">SAVE ME</button>
+		
+</form>
+			
+
+<div class="cache"></div>
+	<div class="container">
+		<div class="cache"></div>
+		{% for advert in listSavies %}	
+		<div class="savies">
+			<div class="col-md-1"></div>
+      <div class="col-md-3"> <img src="{{ asset(advert.image.webPath) }}" alt="{{ advert.image.alt }}" style="height:150px;width:150px;" class ="img-circle colimagelist img-responsive center-block"></div>
+			<div class="col-md-1"></div>
+			<div class="description col-md-6">
+				<a href="{{ path('hugo_platform_view', {'slug': advert.slug}) }}"><h3 style="color:white">{{ advert.title }}</h3></a>
+				<p>{{ advert.content }}</p>
+			</div>
+			<a class='bouton'id="see" href='{{ path('hugo_platform_view', {'slug': advert.slug}) }}'>See the Savy</a>
+			<p class="author"> by <a href="{{ path('fos_user_profile_show_name', {'username': advert.author}) }}">
+	           {{ advert.author }}</a>, the {{ advert.date|date('d/m/Y') }}</p>
+	    {% if is_granted('ROLE_ADMIN') %}
+	          <a href="{{ path('hugo_platform_edit', {'slug': advert.slug}) }}">
+	            <i class="glyphicon glyphicon-edit glyphcolor"></i>
+	          </a>
+	          <a href="{{ path('hugo_platform_delete', {'slug': advert.slug}) }}">
+	            <i class="glyphicon glyphicon-trash glyphcolor"></i>
+	          </a>
+	    {% endif %}
+			<div class="col-md-1"></div>
+		</div>
+		<br>
+		{% else %}
+      		<li><h1>No savies found(yet!)</h1></li>
+		{% endfor %}
+	</div>
+
+    <script src="{{ asset('bundles/hugoplatform/js/script.js')}}"></script>
+{% endblock %}
+

@@ -1,0 +1,20 @@
+{% trans_default_domain 'FOSUserBundle' %}
+
+<h2>Profil public de {{ user.username }}</h2>
+<hr>
+                <div class="row">
+                    <div class="col-sm-2"></div>
+                    <div class="col-sm-8">
+                        {% if is_granted("ROLE_ADMIN") %}
+                            <p>First Name : {{ user.firstname }}</p>
+                            <p>Last Name : {{ user.lastname }}</p>
+                            <p>Birth : {{ user.birth|date("d/m/Y") }}</p>
+                            <p>Phone number : {{ user.phone }}</p>                            
+                        {% endif %}
+                        <p>E-mail: {{ user.email }}</p>
+                        <p>Country : {{ user.location }}</p>
+                        <p>Presentation : {{ user.bio }}</p>
+                    </div>
+                    <div class="col-sm-2"></div>
+                </div>
+

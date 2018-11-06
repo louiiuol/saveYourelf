@@ -1,0 +1,158 @@
+
+  {{ form_start(form, {'attr': {'class': 'form-horizontal'}, 'action': path('hugo_platform_add')}) }}
+
+    {# Les erreurs générales du formulaire. #}
+    {{ form_errors(form) }}
+
+
+    <div class="form-group">
+      {{ form_errors(form.title) }}
+      <div class="col-sm-12">
+        {{ form_widget(form.title, {'attr': {'class': 'form-control','placeholder':'Title'}}) }}
+      </div>
+    </div>
+
+    <div class="form-group">
+      <h3>Required materials</h3>
+      {{ form_errors(form.objects) }}
+      <div class="col-sm-12 objects">
+        {{ form_widget(form.objects, {'attr': {'class': ''}}) }}
+      </div>
+    </div>
+
+    <div class="form-group">
+      {{ form_errors(form.content) }}
+      <div class="col-sm-12">
+        {{ form_widget(form.content, {'attr': {'class': 'form-control','placeholder':'Description'}}) }}
+      </div>
+    </div>
+  
+   <div class="form-group ">
+      {{ form_errors(form.steps) }}
+      <div class="col-sm-12 steps">
+        {{ form_widget(form.steps, {'attr': {'class': ''}}) }}
+      </div>
+    </div>
+
+
+    <div class="form-group">
+      <h3>Categories</h3>
+      {{ form_errors(form.categories) }}
+      <div class="col-xs-12">
+        {{ form_widget(form.categories, {'attr': {'class': ''}}) }}
+      </div>
+    </div>
+
+    <div class="form-group col-xs-9">
+      <h3>Climates</h3>
+      {{ form_errors(form.climates) }}
+      <div class="col-xs-12">
+        {{ form_widget(form.climates, {'attr': {'class': ''}}) }}
+      </div>
+    </div>
+
+    <div class="form-group col-xs-3">
+      <h3>Difficulties</h3>
+      {{ form_errors(form.difficulties) }}
+      <div class="col-xs-12">
+        {{ form_widget(form.difficulties, {'attr': {'class': ''}}) }}
+      </div>
+    </div>
+
+    <div class="form-group">
+      {{ form_errors(form.image) }}
+      <div class="col-sm-12">
+        {{ form_widget(form.image, {'attr': {'class': ''}}) }}
+      </div>
+    </div>
+
+  {% if form.date is defined %}
+    <div style="display:none" class="form-group">
+      {{ form_errors(form.published) }}
+      <div class="col-sm-12">
+        {{ form_widget(form.published, {'attr': {'class': ''}}) }}
+      </div>
+    </div>
+    {% endif %}
+
+     </div>
+            <div class="modal-footer"><button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              {{ form_widget(form.save, {'attr': {'class': 'btn btn-primary'}}) }}</div>
+
+<div style="display:none">
+        {{ form_rest(form) }}
+        {{ form_end(form) }}</div>
+
+
+
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+{# Voici le script en question : #}
+<script type="text/javascript">
+  $(document).ready(function() {
+    // On récupère la balise <div> en question qui contient l'attribut « data-prototype » qui nous intéresse.
+    var $container = $('div#hugo_platformbundle_advert_steps');
+
+    // On ajoute un lien pour ajouter une nouvelle catégorie
+    var $addLink = $('<a href="#" id="add_step" class="btn btn-default">Add a step</a>');
+    $container.append($addLink);
+
+    // On ajoute un nouveau champ à chaque clic sur le lien d'ajout.
+    $addLink.click(function(e) {
+      addStep($container);
+      e.preventDefault(); // évite qu'un # apparaisse dans l'URL
+      return false;
+    });
+
+    // On définit un compteur unique pour nommer les champs qu'on va ajouter dynamiquement
+    var index = $container.find(':input').length;
+
+    // On ajoute un premier champ automatiquement s'il n'en existe pas déjà un (cas d'une nouvelle annonce par exemple).
+    if (index == 0) {
+      addStep($container);
+    } else {
+      // Pour chaque catégorie déjà existante, on ajoute un lien de suppression
+      $container.children('div').each(function() {
+        addDeleteLink($(this));
+      });
+    }
+
+    // La fonction qui ajoute un formulaire Categorie
+    function addStep($container) {
+      // Dans le contenu de l'attribut « data-prototype », on remplace :
+      // - le texte "__name__label__" qu'il contient par le label du champ
+      // - le texte "__name__" qu'il contient par le numéro du champ
+      var $prototype = $($container.attr('data-prototype').replace(/__name__label__/g, 'Step n°' + (index+1))
+          .replace(/__name__/g, index));
+
+      // On ajoute au prototype un lien pour pouvoir supprimer la catégorie
+      addDeleteLink($prototype);
+
+      // On ajoute le prototype modifié à la fin de la balise <div>
+      $container.append($prototype);
+
+      // Enfin, on incrémente le compteur pour que le prochain ajout se fasse avec un autre numéro
+      index++;
+    }
+
+    // La fonction qui ajoute un lien de suppression d'une catégorie
+    function addDeleteLink($prototype) {
+      // Création du lien
+      $deleteLink = $('<a href="#" class="btn btn-danger">Delete</a><br>');
+
+      // Ajout du lien
+      $prototype.append($deleteLink);
+
+      // Ajout du listener sur le clic du lien
+      $deleteLink.click(function(e) {
+        $prototype.remove();
+        e.preventDefault(); // évite qu'un # apparaisse dans l'URL
+        return false;
+      });
+    }
+  });
+</script>
+
+
+

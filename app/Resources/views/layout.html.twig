@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+  <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+        <link rel='icon' href="{{ asset('bundles/hugoplatform/css/img/fav.ico') }}">
+        <title>Save Yourself | {% block title %}{% endblock %}</title>
+        <meta name="author" content="Louis Godlewski">
+        <meta name="description" content="Integrator and Developper web, still studying the depth of the web, I'd be glad to help you for the creation of your website. From Design to the referecement and the maintenance of the site. Check out, and contact me. ">
+        <meta name="keywords" content="louis godlewski, Troyes, integration, developpement, jquery, bootstrap, javascript, html, css, design">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+
+  {% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('bundles/hugoplatform/css/bootstrap.min.css') }}" type="text/css" />
+    <link rel="stylesheet" href="{{ asset('bundles/hugoplatform/css/main.css') }}" type="text/css" />
+    <link rel="stylesheet" href="{{ asset('bundles/hugoplatform/css/styles.css') }}" type="text/css" />
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+  {% endblock %}
+</head>
+<body>
+    <div class="container">
+      <header>
+          <nav class="navbar navbar-default">
+              <div class="container-fluid">
+
+                <div class="navbar-header">
+                  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                  </button>
+                </div>
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                  <div class="col-md-8 col-md-offset-2 col-xs-12">
+                  <ul class="nav navbar-nav navbar-left">
+                    <li><img class='site_logo'src="{{ asset('bundles/hugoplatform/css/img/logobl.png') }}"></li>
+                    <li class="active">
+                      <a href="{{ path('hugo_platform_home') }}">Home</a>
+                    </li>
+                    <li><a href="{{ path('hugo_platform_saveme') }}">Save Me</a></li>
+                    
+                    <li class="dropdown">
+                      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">PLUS <span class="caret"></span></a>
+                      <ul class="dropdown-menu">
+                        
+                        
+                        <li><a href="{{ path('hugo_platform_savies') }}">All Savies</a></li>
+                        <li><a href="{{ path('hugo_platform_categories') }}">All Categories</a></li>
+
+                        <li role="separator" class="divider"></li>
+                        {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                          <li><a data-toggle="modal" data-target="#add_savie" >Add Savies</a></li>
+                        {% else %}
+                          <li><a data-toggle="modal" data-target="#connect" >Add Savies</a></li>
+                        {% endif %}
+                        <li role="separator" class="divider"></li>
+                        <li><a data-toggle="modal" data-target="#contact" href="">Contact</a></li>
+                        <li><a href="{{ path('hugo_platform_faq') }}">F.A.Q</a></li>
+                      </ul>
+                    </li>
+                  </ul>
+                  <ul class="nav navbar-nav navbar-right">
+                    {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                      <li class="dropdown">
+
+
+                        
+                        <a href="#" class="dropdown-toggle profile" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> {{ app.user.username }} <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                          <li><a href="#ancre3" data-toggle="modal" data-target="#mysavies">My Savies</a></li>
+                          <li role="separator" class="divider"></li>
+                          {% if is_granted("ROLE_ADMIN") %}
+                            <li><a href="{{ path('hugo_platform_admin') }}">Admin</a></li>
+                            <li role="separator" class="divider"></li>
+                          {% endif %}
+                          <li><a data-toggle="modal" data-target="#profile" href="">My profile</a></li>
+                          <li><a data-toggle="modal" data-target="#edit_profile" href="">Edit profile</a></li>
+                          <li role="separator" class="divider"></li>
+                          <li><a href="{{ path('fos_user_security_logout') }}">Log Out<button type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button></a></li>
+                        </ul>
+                      </li>
+                    {% else %}
+                      <li><a data-toggle="modal" data-target="#connect">Log In</a></li>
+                      <li><a data-toggle="modal" data-target="#subscribe">Subscribe</a></li>
+                  </ul>
+                  {% endif %}
+                </div>
+                <!-- /.navbar-collapse -->
+              </div>
+              <!-- /.container-fluid -->
+            </nav>
+      </header>
+
+    
+
+
+<!-- CONTENU DU LAYOUT DU BUNDLE -->
+        {% block body %}
+
+
+
+          <!-- PAGE CONTENT -->
+
+
+        {% endblock %}
+    
+    <hr>
+
+    <footer>
+      <div id="footer">
+          <div class="col-md-6">
+            <h4>All rights reserved | &copy; Save Yourself | 2015</h4>
+          </div>
+          <div class="col-md-6">
+            <li class="icone">  
+              <a target='blank'href="https://www.facebook.com/SaveYourself-449990551857579"><img class="img-responsive" src="{{ asset('bundles/hugoplatform/css/img/fb.png') }}"></a><a target='blank' href="https://twitter.com/SaveContact/"><img class="img-responsive" src="{{ asset('bundles/hugoplatform/css/img/twitter.png') }}"></a><a target='blank' href="https://fr.pinterest.com/saveyourselfcon/"><img class="img-responsive" src="{{ asset('bundles/hugoplatform/css/img/pint.png') }}"></a><a target='blank' href="https://www.linkedin.com/pub/save-yourself/109/907/2b3"><img class="img-responsive" src="{{ asset('bundles/hugoplatform/css/img/linkdin.png') }}"></a>&nbsp; &nbsp;
+              <a href="{{ path('hugo_platform_faq') }}"> F.A.Q </a>&nbsp; &nbsp;<a class="bouton" href="#" data-toggle="modal" data-target="#contact">CONTACT</a>
+            </li>
+          </div>  
+        </div>
+    </footer>
+
+
+  <!-- Modal CONTACT -->
+      <div class="modal fade" id="contact">
+        <div class="modal-dialog">
+          <div class="modal-content">
+              <div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button><h4 class="modal-title">CONTACT</h4></div>
+              <div class="modal-body"><h6>Ask Any Questions !</h6>
+              <form action="{{ path("fos_user_security_check") }}" method="post" class="form-horizontal" >
+                <div class="form-group">
+                    <div class="col-sm-12"><input required="required" type="email" name="_username" class="form-control" id="inputEmail3" placeholder='Subject'></div></div>
+                <div class="form-group">
+                    <div class="col-sm-12"><input required="required" type="text" name="_password" class="form-control" id="inputPassword3" placeholder="Username"></div></div>
+                 <div class="form-group">
+                    <div class="col-sm-12"><input required="required" type="text" name="_password" class="form-control" id="inputPassword3" placeholder="Message"></div></div>
+               
+              </div>
+              <div class="modal-footer"><button type="button" class="btn btn-default" data-dismiss="modal">Close</button><button type="button" class="btn btn-primary">Contact Us</button></div>
+             </form></div>
+        </div>
+    </div>
+
+
+{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+    <!-- Modal ADD_Savie -->
+    <div class="modal fade " id="add_savie" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        {{ render(controller('HugoPlatformBundle:Advert:add')) }}
+    </div>
+    <!-- Modal MySavies -->
+    <div class="modal fade " id="mysavies" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        {{ render(controller('HugoPlatformBundle:Advert:mysavies')) }}
+    </div>
+      <!-- Modal PROFILE -->
+    <div class="modal fade" id="profile" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        {{ render(controller('HugoUserBundle:Profile:show')) }}
+    </div>
+
+      <!-- Modal EDIT_PROFILE A FAIRE-->
+    <div class="modal fade" id="edit_profile" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        {{ render(controller('HugoUserBundle:Profile:edit')) }}
+    </div>
+{% endif %}
+
+  <!-- Modal connect -->
+  <div class="modal fade" id="connect" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      {{ render(controller('HugoUserBundle:Security:login')) }}
+  </div>
+
+<!-- Modal register -->
+  <div class="modal fade" id="subscribe" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      {{ render(controller('HugoUserBundle:Registration:register')) }}
+  </div>
+
+
+
+
+
+  
+
+</div>
+  {% block javascripts %}
+    {# Ajoutez ces lignes JavaScript si vous comptez vous servir des fonctionnalités du bootstrap Twitter #}
+
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+  {% endblock %}
+
+</body>
+</html>

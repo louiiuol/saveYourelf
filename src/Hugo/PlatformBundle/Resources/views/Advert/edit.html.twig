@@ -1,0 +1,25 @@
+{% extends "HugoPlatformBundle::layout.html.twig" %}
+
+{% block title %}
+  Edit savy - {{ parent() }}
+{% endblock %}
+
+{% block hugoplatform_body %}
+
+  <h2>Edit savy</h2>
+
+  {{ include("HugoPlatformBundle:Advert:formedit.html.twig") }}
+
+  <p>
+    Editing an existing savy , thank you not to change
+    the general spirit of savy already published .
+  </p>
+
+  <p>
+    <a href="{{ path('hugo_platform_view', {'slug': advert.slug}) }}" class="btn btn-default">
+      <i class="glyphicon glyphicon-chevron-left"></i>
+      Return to all Savies
+    </a>
+  </p>
+
+{% endblock %}

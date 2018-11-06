@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="800px"
+	 height="800px" viewBox="0 0 800 800" enable-background="new 0 0 800 800" xml:space="preserve">
+<g id="Background">
+	<radialGradient id="SVGID_1_" cx="400" cy="400" r="907.7559" gradientUnits="userSpaceOnUse">
+		<stop  offset="0" style="stop-color:#FFFFFF"/>
+		<stop  offset="0.2011" style="stop-color:#FBFBFB"/>
+		<stop  offset="0.4209" style="stop-color:#EDEEEE"/>
+		<stop  offset="0.6496" style="stop-color:#D8D8DA"/>
+		<stop  offset="0.883" style="stop-color:#B9BBBD"/>
+		<stop  offset="1" style="stop-color:#A7A9AC"/>
+	</radialGradient>
+	<rect fill="url(#SVGID_1_)" width="800" height="800"/>
+</g>
+<g id="Objects">
+	<g>
+		<g>
+			<g>
+				<g>
+					<g>
+						<polygon fill="#303084" points="400.736,117.342 400.736,170.15 333.064,259.986 291.908,259.986 						"/>
+						<polygon fill="#392A7A" points="400.962,117.342 400.962,170.15 468.637,259.986 509.791,259.986 						"/>
+					</g>
+					<g>
+						<polygon fill="#919396" points="475.756,183.83 475.756,139.064 446.645,177.223 463.799,199.703 						"/>
+						<polygon fill="#392A7A" points="446.645,177.223 426.34,203.838 443.512,226.637 463.799,199.703 						"/>
+					</g>
+					<g>
+						<polygon fill="#BABCBE" points="325.941,139.064 325.941,183.83 337.899,199.703 355.05,177.223 						"/>
+						<polygon fill="#303084" points="355.05,177.223 337.899,199.703 358.183,226.637 375.357,203.838 						"/>
+					</g>
+					<polygon fill="#919396" points="325.747,139.064 325.747,183.83 268.381,259.986 233.496,259.986 					"/>
+					<polygon fill="#BABCBE" points="475.951,139.064 475.951,183.83 533.316,259.986 568.203,259.986 					"/>
+				</g>
+				<path fill="#303084" d="M378.902,259.986v-24.342c0-12.814,9.825-23.205,21.948-23.205l0,0
+					c12.117,0,21.945,10.391,21.945,23.205v24.342"/>
+				<path fill="#392A7A" d="M400.85,212.439L400.85,212.439c12.117,0,21.945,10.391,21.945,23.205v24.342H400.85"/>
+			</g>
+			<g>
+				<text transform="matrix(1 0 0 1 227.8521 327.4766)"><tspan x="0" y="0" fill="#303084" font-family="'PTSans-Bold'" font-size="61.0606">Save</tspan><tspan x="119.494" y="0" fill="#58595B" font-family="'PTSans-Bold'" font-size="61.0606"> </tspan><tspan x="132.438" y="0" fill="#BABCBE" font-family="'PTSans-Bold'" font-size="61.0606">Yourself</tspan></text>
+			</g>
+			<rect x="229.761" y="273.168" fill="#BABCBE" width="336.458" height="4.65"/>
+			<rect x="229.761" y="335.184" fill="#BABCBE" width="336.458" height="4.654"/>
+		</g>
+		<g>
+			<defs>
+				<rect id="SVGID_2_" x="64.798" y="415.762" width="643.468" height="19.16"/>
+			</defs>
+			<clipPath id="SVGID_3_">
+				<use xlink:href="#SVGID_2_"  overflow="visible"/>
+			</clipPath>
+			<defs>
+				<filter id="Adobe_OpacityMaskFilter" filterUnits="userSpaceOnUse" x="64.474" y="396.297" width="678.919" height="34.68">
+					<feFlood  style="flood-color:white;flood-opacity:1" result="back"/>
+					<feBlend  in="SourceGraphic" in2="back" mode="normal"/>
+				</filter>
+			</defs>
+			<mask maskUnits="userSpaceOnUse" x="64.474" y="396.297" width="678.919" height="34.68" id="SVGID_4_">
+				<g filter="url(#Adobe_OpacityMaskFilter)">
+					<defs>
+						
+							<filter id="Adobe_OpacityMaskFilter_1_" filterUnits="userSpaceOnUse" x="64.474" y="396.297" width="678.919" height="34.68">
+							<feFlood  style="flood-color:white;flood-opacity:1" result="back"/>
+							<feBlend  in="SourceGraphic" in2="back" mode="normal"/>
+						</filter>
+					</defs>
+					<mask maskUnits="userSpaceOnUse" x="64.474" y="396.297" width="678.919" height="34.68" id="SVGID_4_">
+						<g filter="url(#Adobe_OpacityMaskFilter_1_)">
+						</g>
+					</mask>
+					
+						<radialGradient id="SVGID_5_" cx="10657.6719" cy="37132.3125" r="339.4785" gradientTransform="matrix(-0.9995 0 0 -0.0511 11056.2744 2311.0977)" gradientUnits="userSpaceOnUse">
+						<stop  offset="0" style="stop-color:#FFFFFF"/>
+						<stop  offset="0.1137" style="stop-color:#E9E9E9"/>
+						<stop  offset="0.35" style="stop-color:#B2B2B2"/>
+						<stop  offset="0.6853" style="stop-color:#595959"/>
+						<stop  offset="1" style="stop-color:#000000"/>
+					</radialGradient>
+					<path clip-path="url(#SVGID_3_)" mask="url(#SVGID_4_)" fill="url(#SVGID_5_)" d="M64.474,413.637
+						c0,9.578,151.985,17.34,339.458,17.34c187.482,0,339.461-7.762,339.461-17.338s-151.979-17.342-339.461-17.342
+						C216.459,396.297,64.474,404.057,64.474,413.637z"/>
+				</g>
+			</mask>
+			
+				<radialGradient id="SVGID_6_" cx="10657.6719" cy="37132.3125" r="339.4785" gradientTransform="matrix(-0.9995 0 0 -0.0511 11056.2744 2311.0977)" gradientUnits="userSpaceOnUse">
+				<stop  offset="0" style="stop-color:#666666"/>
+				<stop  offset="0.1923" style="stop-color:#7C7C7C"/>
+				<stop  offset="0.5918" style="stop-color:#B3B3B3"/>
+				<stop  offset="1" style="stop-color:#F2F2F2"/>
+			</radialGradient>
+			<path clip-path="url(#SVGID_3_)" fill="url(#SVGID_6_)" d="M64.474,413.637c0,9.578,151.985,17.34,339.458,17.34
+				c187.482,0,339.461-7.762,339.461-17.338s-151.979-17.342-339.461-17.342C216.459,396.297,64.474,404.057,64.474,413.637z"/>
+		</g>
+	</g>
+</g>
+</svg>

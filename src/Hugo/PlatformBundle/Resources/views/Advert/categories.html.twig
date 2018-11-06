@@ -1,0 +1,421 @@
+{% extends "HugoPlatformBundle::layout.html.twig" %}
+
+{% block hugoplatform_body %}
+<script>
+  
+  $(document).ready(function(){
+
+        $("a[href^='#']").click(function (e) {
+    // On annule le comportement initial au cas ou la base soit différente de la page courante.
+    e.preventDefault(); 
+        
+    // On ajoute le hash dans l'url.
+    window.location.hash = $(this).attr("href");
+    
+    // Une fois en place on va forcer l'affichage 40 pixels plus haut.
+    $(window).scrollTop( $(window).scrollTop() - 40 );
+  });
+
+        if(window.location.hash == '#collapseOne'){$('#collapseOne').collapse('show');}
+        if(window.location.hash == '#collapseTwo'){$('#collapseTwo').collapse('show');}
+        if(window.location.hash == '#collapseThree'){$('#collapseThree').collapse('show');}
+        if(window.location.hash == '#collapseFour'){$('#collapseFour').collapse('show');}
+        if(window.location.hash == '#collapseFive'){$('#collapseFive').collapse('show');}
+        if(window.location.hash == '#collapseSix'){$('#collapseSix').collapse('show');}
+        if(window.location.hash == '#collapseSeven'){$('#collapseSeven').collapse('show');}
+        if(window.location.hash == '#collapseEight'){$('#collapseEight').collapse('show');}
+
+  });
+</script>
+<!--PREZ-->
+  <div class="prez">
+    <h2 class="titre"><em>T</em>ravel <em>T</em>hrough <em>A</em>ll <em>C</em>ategories</h2>
+    <p class='text'>Find all the savies that has been added by the SaveYourself community. They're sorted per category so you can surf more easily. You can also add yours</p>
+  </div>
+  <br>
+
+<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true"> 
+
+  <div class="panel panel-default categorie">
+    <div class="panel-heading" role="tab" id="headingThree">
+      <h4 class="panel-title">
+        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+        <img class="img-responsive logo pull-left" src="http://195.83.128.55/~mmi14f07/Symfony/web/bundles/hugoplatform/css/img/logo_survie.png"> 
+          SURVIVAL
+        <img class="img-responsive logo pull-right" src="http://195.83.128.55/~mmi14f07/Symfony/web/bundles/hugoplatform/css/img/logo_survie.png">  
+        </a>
+      </h4>
+    </div>
+      <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+        <div class="panel-body">
+         <div role="tabpanel" class="tab-pane" id="hygiene">
+        <div class="row">
+         
+            {% for advert in listAdvertsSurvival %}
+              <div class="col-md-6">
+              <li>
+                <a href="{{ path('hugo_platform_view', {'slug': advert.slug}) }}">
+                  {{ advert.title }}
+                </a>
+                by <a href="{{ path('fos_user_profile_show_name', {'username': advert.author}) }}">
+                   {{ advert.author }}</a>,
+                the {{ advert.date|date('d/m/Y') }}
+                {% if (is_granted('ROLE_ADMIN') or advert.author==app.user) %}
+                  <a href="{{ path('hugo_platform_edit', {'slug': advert.slug}) }}">
+                    <i class="glyphicon glyphicon-edit"></i>
+                  </a>
+                  <a href="{{ path('hugo_platform_delete', {'slug': advert.slug}) }}">
+                    <i class="glyphicon glyphicon-trash"></i>
+                  </a>
+
+              {% endif %}
+              </li>
+              </div>
+            {% else %}
+            <div class="col-md-12">
+              <li style='color:white'>No savies (yet!)</li>
+            </div>
+            {% endfor %}
+
+        </div>
+      </div>
+        </div>
+      </div>
+  </div>  
+
+
+<div class="panel panel-default categorie">
+    <div class="panel-heading" role="tab" id="headingSeven">
+      <h4 class="panel-title">
+        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
+        <img class="img-responsive logo pull-left" src="http://195.83.128.55/~mmi14f07/Symfony/web/bundles/hugoplatform/css/img/logo_pratique.png">
+          HANDY
+        <img class="img-responsive logo pull-right" src="http://195.83.128.55/~mmi14f07/Symfony/web/bundles/hugoplatform/css/img/logo_pratique.png">
+        </a>
+      </h4>
+    </div>
+      <div id="collapseSeven" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingSeven">
+        <div class="panel-body">
+          <div role="tabpanel" class="tab-pane" id="pratique">
+        <div class="row">
+          
+            {% for advert in listAdvertsHandy %}
+              <div class="col-md-6">
+              <li>
+                <a href="{{ path('hugo_platform_view', {'slug': advert.slug}) }}">
+                  {{ advert.title }}
+                </a>
+                by <a href="{{ path('fos_user_profile_show_name', {'username': advert.author}) }}">
+                   {{ advert.author }}</a>,
+                the {{ advert.date|date('d/m/Y') }}
+                {% if (is_granted('ROLE_ADMIN') or advert.author==app.user) %}
+                  <a href="{{ path('hugo_platform_edit', {'slug': advert.slug}) }}">
+                    <i class="glyphicon glyphicon-edit"></i>
+                  </a>
+                  <a href="{{ path('hugo_platform_delete', {'slug': advert.slug}) }}">
+                    <i class="glyphicon glyphicon-trash"></i>
+                  </a>
+
+              {% endif %}
+              </li>
+            </div>
+            {% else %}
+              <li style='color:white'>No savies (yet!)</li>
+            {% endfor %}
+        </div>
+      </div>
+        </div>
+      </div>
+  </div> 
+
+
+  <div class="panel panel-default categorie">
+    <div class="panel-heading" role="tab" id="headingFive">
+      <h4 class="panel-title">
+        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+        <img class="img-responsive logo pull-left" src="http://195.83.128.55/~mmi14f07/Symfony/web/bundles/hugoplatform/css/img/logo_plant.png"> 
+          DECORATIVE
+         <img class="img-responsive logo pull-right" src="http://195.83.128.55/~mmi14f07/Symfony/web/bundles/hugoplatform/css/img/logo_plant.png">
+        </a>
+      </h4>
+    </div>
+      <div id="collapseFive" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFive">
+        <div class="panel-body">
+          <div role="tabpanel" class="tab-pane" id="plant">
+        <div class="row">
+          
+
+            {% for advert in listAdvertsDecorative %}
+              <div class="col-md-6">
+              <li>
+                <a href="{{ path('hugo_platform_view', {'slug': advert.slug}) }}">
+                  {{ advert.title }}
+                </a>
+                by <a href="{{ path('fos_user_profile_show_name', {'username': advert.author}) }}">
+                   {{ advert.author }}</a>,
+                the {{ advert.date|date('d/m/Y') }}
+                {% if (is_granted('ROLE_ADMIN') or advert.author==app.user) %}
+                  <a href="{{ path('hugo_platform_edit', {'slug': advert.slug}) }}">
+                    <i class="glyphicon glyphicon-edit"></i>
+                  </a>
+                  <a href="{{ path('hugo_platform_delete', {'slug': advert.slug}) }}">
+                    <i class="glyphicon glyphicon-trash"></i>
+                  </a>
+
+              {% endif %}
+              </li>
+            </div>
+            {% else %}
+            <div class="col-md-12">
+              <li style='color:white'>No savies (yet!)</li>
+            </div>
+            {% endfor %}
+
+        </div>
+      </div>
+        </div>
+      </div>
+  </div> 
+
+
+  <div class="panel panel-default categorie">
+    <div class="panel-heading" role="tab" id="headingTwo">
+      <h4 class="panel-title">
+        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+        <img class="img-responsive logo pull-left" src="http://195.83.128.55/~mmi14f07/Symfony/web/bundles/hugoplatform/css/img/logo_hygiene.png"> 
+          HEALTH
+        <img class="img-responsive logo pull-right" src="http://195.83.128.55/~mmi14f07/Symfony/web/bundles/hugoplatform/css/img/logo_hygiene.png">
+        </a>
+      </h4>
+    </div>
+      <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+        <div class="panel-body">
+          <div role="tabpanel" class="tab-pane" id="hygiene">
+        <div class="row">
+          
+
+            {% for advert in listAdvertsHealth %}
+              <div class="col-md-6">
+              <li>
+                <a href="{{ path('hugo_platform_view', {'slug': advert.slug}) }}">
+                  {{ advert.title }}
+                </a>
+                by <a href="{{ path('fos_user_profile_show_name', {'username': advert.author}) }}">
+                   {{ advert.author }}</a>,
+                the {{ advert.date|date('d/m/Y') }}
+                {% if (is_granted('ROLE_ADMIN') or advert.author==app.user) %}
+                  <a href="{{ path('hugo_platform_edit', {'slug': advert.slug}) }}">
+                    <i class="glyphicon glyphicon-edit"></i>
+                  </a>
+                  <a href="{{ path('hugo_platform_delete', {'slug': advert.slug}) }}">
+                    <i class="glyphicon glyphicon-trash"></i>
+                  </a>
+
+              {% endif %}
+              </li>
+            </div>
+            {% else %}
+            <div class="col-md-12">
+              <li style='color:white'>No savies (yet!)</li>
+            </div>
+            {% endfor %}
+
+        </div>
+      </div>
+        </div>
+      </div>
+  </div> 
+
+
+  <div class="panel panel-default categorie">
+    <div class="panel-heading" role="tab" id="headingSix">
+      <h4 class="panel-title">
+        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
+        <img class="img-responsive logo pull-left" src="http://195.83.128.55/~mmi14f07/Symfony/web/bundles/hugoplatform/css/img/logo_techno.png">
+          TECHNOLOGY
+        <img class="img-responsive logo pull-right" src="http://195.83.128.55/~mmi14f07/Symfony/web/bundles/hugoplatform/css/img/logo_techno.png">
+        </a>
+      </h4>
+    </div>
+      <div id="collapseSix" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingSix">
+        <div class="panel-body">
+          <div role="tabpanel" class="tab-pane" id="voyage">
+        <div class="row">
+
+            {% for advert in listAdvertsTechnology %}
+              <div class="col-md-6">
+              <li>
+                <a href="{{ path('hugo_platform_view', {'slug': advert.slug}) }}">
+                  {{ advert.title }}
+                </a>
+                by <a href="{{ path('fos_user_profile_show_name', {'username': advert.author}) }}">
+                   {{ advert.author }}</a>,
+                the {{ advert.date|date('d/m/Y') }}
+                {% if (is_granted('ROLE_ADMIN') or advert.author==app.user) %}
+                  <a href="{{ path('hugo_platform_edit', {'slug': advert.slug}) }}">
+                    <i class="glyphicon glyphicon-edit"></i>
+                  </a>
+                  <a href="{{ path('hugo_platform_delete', {'slug': advert.slug}) }}">
+                    <i class="glyphicon glyphicon-trash"></i>
+                  </a>
+
+              {% endif %}
+              </li>
+            </div>
+            {% else %}
+            <div class="col-md-12">
+              <li style='color:white'>No savies (yet!)</li>
+            </div>
+            {% endfor %}
+        </div>
+      </div>
+        </div>
+      </div>
+  </div> 
+
+
+<!-- TRAVELING -->
+<div class="panel panel-default categorie">
+    <div class="panel-heading" role="tab" id="headingEight">
+      <h4 class="panel-title">
+        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseEight" aria-expanded="false" aria-controls="collapseEight">
+        <img class="img-responsive logo pull-left" src="http://195.83.128.55/~mmi14f07/Symfony/web/bundles/hugoplatform/css/img/logo_voyage.png">
+          TRAVEL
+        <img class="img-responsive logo pull-right" src="http://195.83.128.55/~mmi14f07/Symfony/web/bundles/hugoplatform/css/img/logo_voyage.png">
+        </a>
+      </h4>
+    </div>
+      <div id="collapseEight" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingEight">
+        <div class="panel-body">
+          <div role="tabpanel" class="tab-pane" id="voyage">
+        <div class="row">
+
+              {% for advert in listAdvertsTravel %}
+                <div class="col-md-6">
+                <li>
+                  <a href="{{ path('hugo_platform_view', {'slug': advert.slug}) }}">
+                    {{ advert.title }}
+                  </a>
+                  by <a href="{{ path('fos_user_profile_show_name', {'username': advert.author}) }}">
+                     {{ advert.author }}</a>,
+                  the {{ advert.date|date('d/m/Y') }}
+                 {% if (is_granted('ROLE_ADMIN') or advert.author==app.user) %}
+                    <a href="{{ path('hugo_platform_edit', {'slug': advert.slug}) }}">
+                      <i class="glyphicon glyphicon-edit"></i>
+                    </a>
+                    <a href="{{ path('hugo_platform_delete', {'slug': advert.slug}) }}">
+                      <i class="glyphicon glyphicon-trash"></i>
+                    </a>
+
+                {% endif %}
+                </li>
+              </div>
+              {% else %}
+              <div class="col-md-12">
+                <li style='color:white'>No savies (yet!)</li>
+              </div>
+              {% endfor %}
+        </div>
+      </div>
+        </div>
+      </div>
+  </div> 
+
+<!-- GARDENING -->
+
+  <div class="panel panel-default categorie">
+    <div class="panel-heading" role="tab" id="headingFour">
+      <h4 class="panel-title">
+        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+        <img class="img-responsive logo pull-left" src="http://195.83.128.55/~mmi14f07/Symfony/web/bundles/hugoplatform/css/img/logo_jardinage.png">
+          GARDENING
+        <img class="img-responsive logo pull-right" src="http://195.83.128.55/~mmi14f07/Symfony/web/bundles/hugoplatform/css/img/logo_jardinage.png">
+        </a>
+      </h4>
+    </div>
+      <div id="collapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFour">
+        <div class="panel-body">
+          <div role="tabpanel" class="tab-pane" id="jardinage">
+        <div class="row">
+
+            {% for advert in listAdvertsGardening %}
+              <div class="col-md-6">
+              <li>
+                <a href="{{ path('hugo_platform_view', {'slug': advert.slug}) }}">
+                  {{ advert.title }}
+                </a>
+                by <a href="{{ path('fos_user_profile_show_name', {'username': advert.author}) }}">
+                   {{ advert.author }}</a>,
+                the {{ advert.date|date('d/m/Y') }}
+                {% if (is_granted('ROLE_ADMIN') or advert.author==app.user) %}
+                  <a href="{{ path('hugo_platform_edit', {'slug': advert.slug}) }}">
+                    <i class="glyphicon glyphicon-edit"></i>
+                  </a>
+                  <a href="{{ path('hugo_platform_delete', {'slug': advert.slug}) }}">
+                    <i class="glyphicon glyphicon-trash"></i>
+                  </a>
+              {% endif %}
+              </li>
+            </div>
+            {% else %}
+            <div class="col-md-12">
+              <li style='color:white'>No savies (yet!)</li>
+            </div>
+            {% endfor %}
+
+        </div>
+      </div>
+        </div>
+      </div>
+  </div>
+
+<!-- MATERIALS -->
+
+  <div class="panel panel-default categorie">
+    <div class="panel-heading" role="tab" id="headingOne">
+      <h4 class="panel-title">
+        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+        <img class="img-responsive logo pull-left" src="http://195.83.128.55/~mmi14f07/Symfony/web/bundles/hugoplatform/css/img/logo_materiaux.png">  
+          MATERIALS
+        <img class="img-responsive logo pull-right" src="http://195.83.128.55/~mmi14f07/Symfony/web/bundles/hugoplatform/css/img/logo_materiaux.png">
+        </a>
+      </h4>
+    </div>
+      <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+        <div class="panel-body">
+          <div role="tabpanel" class="tab-pane" id="materiaux">
+              <div class="row">
+
+                    {% for advert in listAdvertsMaterials %}
+                      <div class="col-md-6">
+                      <li>
+                        <a href="{{ path('hugo_platform_view', {'slug': advert.slug}) }}">
+                          {{ advert.title }}
+                        </a>
+                        by <a href="{{ path('fos_user_profile_show_name', {'username': advert.author}) }}">
+                           {{ advert.author }}</a>,
+                        the {{ advert.date|date('d/m/Y') }}
+                        {% if (is_granted('ROLE_ADMIN') or advert.author==app.user) %}
+                          <a href="{{ path('hugo_platform_edit', {'slug': advert.slug}) }}">
+                            <i class="glyphicon glyphicon-edit"></i>
+                          </a>
+                          <a href="{{ path('hugo_platform_delete', {'slug': advert.slug}) }}">
+                            <i class="glyphicon glyphicon-trash"></i>
+                          </a>
+
+                      {% endif %}
+                      </li>
+                    </div>
+                    {% else %}
+                    <div class="col-md-12">
+                      <li style='color:white'>No savies (yet!)</li>
+                    </div>
+                    {% endfor %}
+              </div>
+            </div>
+        </div>
+      </div>
+  </div> 
+
+
+{% endblock %}

@@ -1,0 +1,17 @@
+
+
+{% block fos_user_content %}
+      <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button><h4 class="modal-title">SUBSCRIBE</h4></div>
+            <div class="modal-body"><h6>Join the Community !</h6>
+	{% include "FOSUserBundle:Registration:register_content.html.twig" %}
+            </div>
+            <div class="modal-footer">
+            <a data-toggle="modal" data-target="#connect" class="pull-left" data-dismiss="modal" style="cursor: pointer;">Already registered?</a>
+
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button><button value="{{ 'registration.submit'|trans }}" type="submit" class="btn btn-primary">Subscribe</button></div>
+           </form></div>
+      </div>
+    </div>
+{% endblock fos_user_content %}

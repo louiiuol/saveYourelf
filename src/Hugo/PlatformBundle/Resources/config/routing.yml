@@ -1,0 +1,58 @@
+hugo_platform_home:
+    path:    /
+    defaults: { _controller:HugoPlatformBundle:Advert:index }
+
+hugo_platform_saveme:
+    path:    /saveme
+    defaults: { _controller:HugoPlatformBundle:Advert:saveme }
+
+hugo_platform_savies:
+    path:    /allsavies/{page}
+    defaults: { _controller:HugoPlatformBundle:Advert:savies, page: 1 }
+    requirements:
+        page: \d*
+
+hugo_platform_view:
+    path:    /allsavies/savy/{slug}
+    defaults: { _controller:HugoPlatformBundle:Advert:view }
+    requirements:
+        id: \d+
+
+hugo_platform_add:
+    path:    /allsavies/add
+    defaults: { _controller:HugoPlatformBundle:Advert:add }
+
+hugo_platform_edit:
+    path:    /allsavies/edit/{slug}
+    defaults: { _controller:HugoPlatformBundle:Advert:edit }
+
+hugo_platform_delete:
+    path : /allsavies/delete/{slug}
+    defaults: { _controller:HugoPlatformBundle:Advert:delete }
+
+hugo_platform_categories:
+    path:    /categories
+    defaults: { _controller:HugoPlatformBundle:Advert:categories }
+
+hugo_platform_mysavies:
+    path:    /mysavies
+    defaults: { _controller:HugoPlatformBundle:Advert:mysavies }
+
+hugo_platform_faq:
+    path: /faq
+    defaults: { _controller:HugoPlatformBundle:Advert:faq }
+
+hugo_platform_admin:
+    path: /admin
+    defaults: { _controller:HugoPlatformBundle:Advert:admin }
+
+hugo_platform_admin_delete:
+    path: /admin/delete/{id}
+    defaults: { _controller:HugoPlatformBundle:Advert:admindelete }
+    requirements:
+        id: \d+
+hugo_platform_admin_edit:
+    path: /admin/edit/{id}
+    defaults: { _controller:HugoPlatformBundle:Advert:adminedit }
+    requirements:
+        id: \d+

@@ -1,0 +1,91 @@
+{% extends "HugoPlatformBundle::layout.html.twig" %}
+
+{% block title %}
+  Read savy - {{ parent() }}
+{% endblock %}
+
+{% block hugoplatform_body %}
+
+<div class="row savieview">
+  {% for difficulty in advert.difficulties %}
+<li class="col-xs-2">
+<img src="http://195.83.128.55/~mmi14f07/Symfony/web/bundles/hugoplatform/css/img/{{difficulty.name}}.png" class ="img-circle img-responsive center-block"><h2>{{difficulty.name}}
+</li>
+</h2>{% endfor %}
+
+<li class="col-xs-10">
+<h1 style='margin-bottom:45px;font-size:2.5em;font-weight:bolder;'>{{ advert.title }}</h1>
+      <i><p style='display:inline;margin-bottom:45px'>by <a href="{{ path('fos_user_profile_show_name', {'username': advert.author}) }}">{{ advert.author }}</a>, the {{ advert.date|date('d/m/Y') }}</i></li>
+
+
+<div style="margin-top:250px" class="row">
+  <div class="col-xs-4 col-xs-offset-1">
+    <div class="form-group">
+
+        {% if not advert.categories.empty %}
+      <h2>Categories</h2>{% for category in advert.categories %} {{ category.name }}{% if not loop.last %}, {% endif %}{% endfor %}</p>
+        {% endif %}
+        {% if not advert.climates.empty %}
+      <h2>Climates</h2>{% for climate in advert.climates %} {{ climate.name }}{% if not loop.last %}, {% endif %}{% endfor %}</p>        
+        {% endif %}        
+        {% if not advert.objects.empty %}
+      <h2>Required materials</h2>{% for object in advert.objects %} {{ object.name }}{% if not loop.last %}, {% endif %}{% endfor %}</p>
+        {% endif %}
+    </div>
+  </div>
+  <div class="col-xs-5 col-xs-offset-1">
+    <img
+    src="{{ asset(advert.image.webPath) }}"
+    alt="{{ advert.image.alt }}" style="height:230px;width:230px;"class ="img-circle img-responsive center-block">
+  </div>
+ </div>
+<div class="row">
+<div class="col-xs-4 col-xs-offset-1">
+    <div class="form-group">
+        <h2>Description</h2>
+        <p>{{advert.content}}</p>
+    </div>
+  </div>
+
+<div class="col-xs-7">
+    <div class="form-group">
+          <article class="accordion">
+            {% for step in advert.steps %}
+              <section id="acc{{loop.index}}">
+                <h2><a href="#acc{{loop.index}}">Step {{ loop.index }}</a></h2>
+                <p>{{ step.texte }}{% if not loop.last %} {% endif %}.</p>
+              </section>   
+            {% endfor %}         
+
+          </article>
+    </div>
+  </div>
+</div>
+
+
+
+  
+
+</div>
+
+<br>
+
+  <p>
+    <a href="{{ path('hugo_platform_home') }}" class="btn btn-default">
+      <i class="glyphicon glyphicon-chevron-left"></i>
+      Return to all savies
+    </a>
+    {% if (is_granted('ROLE_ADMIN') or advert.author==app.user) %}
+      <a href="{{ path('hugo_platform_edit', {'slug': advert.slug}) }}" class="btn btn-default">
+        <i class="glyphicon glyphicon-edit"></i>
+        Edit savy
+      </a>
+      <a href="{{ path('hugo_platform_delete', {'slug': advert.slug}) }}" class="btn btn-danger">
+        <i class="glyphicon glyphicon-trash"></i>
+        Delete savy
+      </a>
+    {% endif %}
+  </p>
+
+{% endblock %}
+
